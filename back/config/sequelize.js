@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 // Paramétre
 const database = new Sequelize(
-  "groupomania",
+  process.env.DB_Name,
   process.env.DB_USER,
   process.env.DB_PASS,
   {
