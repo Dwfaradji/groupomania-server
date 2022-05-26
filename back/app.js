@@ -8,9 +8,8 @@ import { database } from "./config/sequelize.js";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-
 import cors from "cors";
-appli.use(cors());
+
 // Export
 export const appli = express();
 // Constant
@@ -18,7 +17,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //Autorisation acceder à notre API
 appli.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin :*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
@@ -46,7 +45,7 @@ runDatabase();
 appli.use(bodyParser.urlencoded({ extended: true }));
 appli.use(bodyParser.json());
 appli.use("/images", express.static(path.join(__dirname, "images")));
-
+appli.use(cors());
 // Route
 appli.use("/api/auth", userRoad);
 appli.use("/api/comments", commentRoad);
