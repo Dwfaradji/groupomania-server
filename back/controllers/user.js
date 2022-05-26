@@ -162,10 +162,12 @@ async function updatePicture(req, res) {
       where: { id: id },
     });
     //enregistre l'image dans le fichier image
-    const urlHeroku = "groupomania-by-faradji.herokuapp.com";
+    // const urlHeroku = "https://groupomania-by-faradji.herokuapp.com/api/"
     if (userFind !== null) {
       if (req.file != undefined) {
-        imageURL = `${req.protocol}://${urlHeroku}/images/${req.file.filename}`;
+        imageURL = `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename
+        }`;
         console.log(imageURL);
         const modifyImage = {
           image: imageURL,
