@@ -162,17 +162,15 @@ async function updatePicture(req, res) {
       where: { id: id },
     });
     //enregistre l'image dans le fichier image
+    const urlHeroku = "groupomania-by-faradji.herokuapp.com";
     if (userFind !== null) {
       if (req.file != undefined) {
-        imageURL = `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`;
+        imageURL = `${req.protocol}://${urlHeroku}/images/${req.file.filename}`;
         console.log(imageURL);
         const modifyImage = {
           image: imageURL,
         };
         await User.update(modifyImage, {
-      
           where: { id: req.user.userId },
         });
         return res.status(201).json({ message: "image sauvegarder" });
