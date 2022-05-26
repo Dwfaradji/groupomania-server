@@ -8,7 +8,6 @@ import { database } from "./config/sequelize.js";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import cors from "cors";
 
 // Export
 export const appli = express();
@@ -45,7 +44,7 @@ runDatabase();
 appli.use(bodyParser.urlencoded({ extended: true }));
 appli.use(bodyParser.json());
 appli.use("/images", express.static(path.join(__dirname, "images")));
-appli.use(cors());
+
 // Route
 appli.use("/api/auth", userRoad);
 appli.use("/api/comments", commentRoad);
