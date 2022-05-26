@@ -167,6 +167,7 @@ async function updatePicture(req, res) {
         imageURL = `${req.protocol}://${req.get("host")}/images/${
           req.file.filename
         }`;
+        console.log(imageURL);
         const modifyImage = {
           image: imageURL,
         };
