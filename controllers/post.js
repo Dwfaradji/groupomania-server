@@ -9,11 +9,9 @@ async function createPost(req, res) {
     req.body.image = `${req.protocol}://${req.get("host")}/images/${
       req.file.filename
     }`;
-    console.log(req.file, "file");
-    // console.log("OK");
+    console.log(req.body.image, "image");
   } else {
-    console.log(req.file, "file2");
-    console.log("KO");
+    req.body.image = null;
   }
 
   // Enregistre les informations de la creation d'un post
@@ -25,7 +23,6 @@ async function createPost(req, res) {
         image: req.body.image,
         user_id: req.user.userId,
       });
-      console.log(post, "post");
       return res.status(201).json({ post, message: "Post créé !" });
     } else {
       res.status(401).json({ error: "il ya rien a poster" });
