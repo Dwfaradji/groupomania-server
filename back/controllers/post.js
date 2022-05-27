@@ -7,7 +7,7 @@ import jwt from "../utils/jwt.js";
 // Routes
 async function createPost(req, res) {
   if (req.file !== undefined) {
-    req.body.image = `${req.protocol}://${req.get("host")}back/images/${
+    req.body.image = `${req.protocol}://${req.get("host")}/back/images/${
       req.file.filename
     }`;
     console.log(req.file, "file");
