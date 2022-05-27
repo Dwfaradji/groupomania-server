@@ -16,7 +16,7 @@ async function createPost(req, res) {
 
   // Enregistre les informations de la creation d'un post
   try {
-    if (req.body.title !== "" && req.body.content !== "") {
+    if (req.body.content !== "") {
       const post = await Post.create({
         title: req.body.title,
         content: req.body.content,
