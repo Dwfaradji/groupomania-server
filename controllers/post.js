@@ -16,17 +16,14 @@ async function createPost(req, res) {
 
   // Enregistre les informations de la creation d'un post
   try {
-  
     if (req.body.title !== "" && req.body.content !== "") {
       const post = await Post.create({
         title: req.body.title,
         content: req.body.content,
-        image: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
+        image: req.body.image,
         user_id: req.user.userId,
       });
-      console.log(post,"info poster");
+      console.log(post, "info poster");
       return res.status(201).json({ post, message: "Post créé !" });
     } else {
       res.status(401).json({ error: "il ya rien a poster" });
