@@ -26,6 +26,7 @@ async function createPost(req, res) {
         }`,
         user_id: req.user.userId,
       });
+      console.log(post,"info poster");
       return res.status(201).json({ post, message: "Post créé !" });
     } else {
       res.status(401).json({ error: "il ya rien a poster" });
