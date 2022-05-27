@@ -14,9 +14,14 @@ async function createPost(req, res) {
   } else {
     req.body.image = null;
   }
-  console.log(req.body.image, "voir si image fonction en dehors");
+
   // Enregistre les informations de la creation d'un post
   try {
+    req.body.image = `${req.protocol}://${req.get("host")}/images/${
+      req.file.filename
+    }`;
+    console.log(req.body.image, "voir si image fonction en dehors");
+    
     if (req.body.title !== "" && req.body.content !== "") {
       const post = await Post.create({
         title: req.body.title,
