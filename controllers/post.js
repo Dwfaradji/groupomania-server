@@ -10,10 +10,11 @@ async function createPost(req, res) {
       req.file.filename
     }`;
     console.log(req.body.image, "image");
+    return req.body.image;
   } else {
     req.body.image = null;
   }
-
+  console.log(req.body.image, "voir si image fonction en dehors");
   // Enregistre les informations de la creation d'un post
   try {
     if (req.body.title !== "" && req.body.content !== "") {
