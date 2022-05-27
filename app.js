@@ -19,7 +19,7 @@ appli.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    "Origin, X-Requested-With, Content, Accept, Content-Type:mulipart/from-data, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -43,7 +43,7 @@ runDatabase();
 // Extension
 appli.use(bodyParser.urlencoded({ extended: true }));
 appli.use(bodyParser.json());
-appli.use("/images", express.static(path.join(__dirname,"images")));
+appli.use("/images", express.static(path.join(__dirname, "images")));
 
 // Route
 appli.use("/api/auth", userRoad);
