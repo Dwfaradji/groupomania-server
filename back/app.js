@@ -43,7 +43,7 @@ runDatabase();
 // Extension
 appli.use(bodyParser.urlencoded({ extended: true }));
 appli.use(bodyParser.json());
-appli.use("back/images", express.static(path.join(__dirname,"images")));
+appli.use("/images", express.static(path.join(__dirname,"images")));
 
 // Route
 appli.use("/api/auth", userRoad);
