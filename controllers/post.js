@@ -10,23 +10,20 @@ async function createPost(req, res) {
       req.file.filename
     }`;
     console.log(req.body.image, "image");
-    return req.body.image;
   } else {
     req.body.image = null;
   }
 
   // Enregistre les informations de la creation d'un post
   try {
-    req.body.image = `${req.protocol}://${req.get("host")}/images/${
-      req.file.filename
-    }`;
-    console.log(req.body.image, "voir si image fonction en dehors");
-    
+  
     if (req.body.title !== "" && req.body.content !== "") {
       const post = await Post.create({
         title: req.body.title,
         content: req.body.content,
-        image: req.body.image,
+        image: `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename
+        }`,
         user_id: req.user.userId,
       });
       return res.status(201).json({ post, message: "Post créé !" });
